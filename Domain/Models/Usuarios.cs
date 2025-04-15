@@ -8,7 +8,7 @@ namespace Usuarios.Models
 {
     public class Usuario{
 
-    public int IdUsuario {get; set;}
+    public Guid IdUsuario {get; set;}
     public string Nome { get; set; }
     public int Idade { get; set; }
     public string Cidade { get; set; }
@@ -18,7 +18,12 @@ namespace Usuarios.Models
     public string SenhaHash { get; set; }
     public string Login{ get; set; }
     public DateTime CriadoEm { get; set; }  
+
     
+    public ICollecction<Anuncios> Anuncios { get; set;}
+    public ICollecction<Denuncias> Denuncias { get; set;}
+    public InfoProfissionais InfoProfissionais { get; set;}
+
     }
 
    
@@ -27,6 +32,3 @@ namespace Usuarios.Models
 
 
 
-//Usuario 1:n Anuncios
-//Usuario 1:n Denuncias
-//usuario 1 Dados Profissionais
