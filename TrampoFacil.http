@@ -1,0 +1,6 @@
+@TrampoFacil_HostAddress = http://localhost:5189
+
+GET {{TrampoFacil_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
