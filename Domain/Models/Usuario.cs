@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 
 
-namespace Usuario.Models
+namespace Domain.Models
 {
     public class Usuario{
 
@@ -20,8 +20,8 @@ namespace Usuario.Models
     public DateTime CriadoEm { get; set; }  
 
     
-    public ICollecction<Anuncio> Anuncios { get; set;}
-    public ICollecction<Denuncia> Denuncias { get; set;}
+    public ICollection<Anuncio> Anuncios { get; set;}
+    public ICollection<Denuncia> Denuncias { get; set;}
     public InfoPro InfoPro { get; set;}
 
     }

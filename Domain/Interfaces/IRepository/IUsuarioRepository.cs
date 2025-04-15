@@ -1,4 +1,4 @@
-using Usuarios.Models;
+using Domain.Models;
 
 namespace TrampoFacil.Domain.Interfaces.Repository{
 public interface IUsuarioRepository

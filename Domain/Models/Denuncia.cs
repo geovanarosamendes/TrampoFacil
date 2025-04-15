@@ -1,5 +1,5 @@
 
-namespace Denuncia.Models{
+namespace Domain.Models{
 
     public class Denuncia{
         public Guid  IdDenuncia { get; set; }
@@ -8,6 +8,6 @@ namespace Denuncia.Models{
         public DateTime  CriadoEm { get; set; }
 
         public Guid UsuarioId { get; set;}
-        public Usuario Usuario
+        public Usuario Usuario  { get; set; }
     }
 }

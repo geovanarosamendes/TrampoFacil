@@ -15,9 +15,9 @@ public static class DependencyInjectionConfig
 
         // Falta criar as injeções de dependência das outras entidades:
         
-        //anuncios
-        //denuncias
-        //infoProfissionais
+        //anuncio
+        //denuncia
+        //infoProfissionai
         return services;
     }
     

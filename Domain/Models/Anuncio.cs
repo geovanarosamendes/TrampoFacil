@@ -1,6 +1,6 @@
 
 
-namespace Anuncio.Models{
+namespace Domain.Models{
 
     public class Anuncio{
         public Guid IdAnuncio { get; set; }

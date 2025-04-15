@@ -1,5 +1,5 @@
 using TrampoFacil.Application.DTOs.Usuario;
-using Usuarios.Models;
+using Domain.Models;
 using TrampoFacil.Domain.Interfaces.Repository;
 using TrampoFacil.Domain.Interfaces.Services;
 

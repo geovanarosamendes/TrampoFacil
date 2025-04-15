@@ -1,6 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
-using Usuarios.Models;
+using Domain.Models;
 using TrampoFacil.Infrastructure.Data;
 using TrampoFacil.Domain.Interfaces.Repository;
 
@@ -20,7 +20,7 @@ namespace TrampoFacil.Infrastructure.Repository{
 
          public async Task<Usuario> GetByIdAsync(Guid id)
          {
-             var usuario = await _context.Usuarios.FindAsync(id);
+             var usuario = await _context.Usuario.FindAsync(id);
 
 
              if (usuario is null)

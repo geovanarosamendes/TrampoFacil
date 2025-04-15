@@ -1,6 +1,6 @@
 
 
-namespace InfoPro.Models{
+namespace Domain.Models{
 
     public class InfoPro{
 

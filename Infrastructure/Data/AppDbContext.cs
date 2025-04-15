@@ -1,9 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
-using Anuncio.Models;
-using Usuario.Models;
-using Denuncia.Models;
-using InfoPro.Models;
+using Domain.Models;
 
 namespace TrampoFacil.Infrastructure.Data {
  
@@ -14,7 +11,7 @@ namespace TrampoFacil.Infrastructure.Data {
     
 
         public DbSet<Usuario>Usuario {get; set;}
-        public DbSet<InfoPro>DadosPro{get; set;}
+        public DbSet<InfoPro>InfoProPro{get; set;}
         public DbSet<Anuncio>Anuncio {get; set;}
         public DbSet<Denuncia>Denuncia {get; set;}
     
@@ -22,25 +19,33 @@ namespace TrampoFacil.Infrastructure.Data {
     {
         base.OnModelCreating(modelBuilder);
 
-        //Usuarios 1:N Anuncios
+
+        modelBuilder.Entity<Usuario>().HasKey(u => u.IdUsuario);
+        modelBuilder.Entity<Anuncio>().HasKey(a => a.IdAnuncio);
+        modelBuilder.Entity<Denuncia>().HasKey(d => d.IdDenuncia);
+        modelBuilder.Entity<InfoPro>().HasKey(i => i.IdInfoPro);
+
+
+        
         modelBuilder.Entity<Usuario>()
             .HasMany(u=> u.Anuncios)
             .WithOne(a => a.Usuario)
             .HasForeignKey(a => a.UsuarioId);
 
 
-        //Usuarios 1:N Denuncias
         modelBuilder.Entity<Usuario>()
             .HasMany(u => u.Denuncias)
             .WithOne(d => d.Usuario)
             .HasForeignKey(d => d.UsuarioId);
 
 
-        //Usuarios 1:1 InfoProfissionais
         modelBuilder.Entity<Usuario>()
-            .HasOne(u => u.InfoProf)
+            .HasOne(u => u.InfoPro)
             .WithOne (ip =>ip.Usuario)
             .HasForeignKey<InfoPro>(ip => ip.UsuarioId);
+
+
+        
     }
     
 
