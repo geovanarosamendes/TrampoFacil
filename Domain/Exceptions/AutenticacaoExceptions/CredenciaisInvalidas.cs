@@ -6,7 +6,7 @@ namespace TrampoFacil.Exceptions.AutenticacaoExceptions
     public class CredenciaisInvalidas
     {
         public CredenciaisInvalidas()
-            :base("Credencias Inválidas", (int)HttpsStatusCode.BadRequest)
+            :base("Credencias Inválidas", (int)HttpStatusCode.BadRequest)
         {
         }
     }

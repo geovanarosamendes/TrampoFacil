@@ -43,9 +43,16 @@ namespace TrampoFacil.Application.Validators.Usuario{
                 .MinimumLength(10).WithMessage("O Login deve ter no mínimo 10 caracteres")
                 .MaximumLength(80).WithMessage("O Login não pode ter mais que 80 caracteres");
 
-            RuleFor(x => x.SenhaHash)
+            RuleFor(x => x.Senha)
                 .NotEmpty().WithMessage("A senha é obrigatória.")
                 .MinimumLength(6).WithMessage("A senha deve ter no mínimo 6 caracteres.");
+
+            RuleFor(x => x.FotoPerfilUrl)
+                .Cascade(CascadeMode.Stop)
+                .Must(url => string.IsNullOrEmpty(url) || Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                .WithMessage("A URL da foto de perfil está inválida.")
+                .Must(url => string.IsNullOrEmpty(url) || url.EndsWith(".jpg") || url.EndsWith(".png") || url.EndsWith(".jpeg"))
+                .WithMessage("A foto deve ser .jpg, .png ou .jpeg");
 
 
         }

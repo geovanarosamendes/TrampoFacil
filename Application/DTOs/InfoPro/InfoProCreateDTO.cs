@@ -1,7 +1,7 @@
 
-namespace TrampoFacil.Application.DTOs.InfoProfissionais{
+namespace TrampoFacil.Application.DTOs.InfoPro{
 
-    public class InfoCreateDTO
+    public class InfoProCreateDTO
     {
         public required string Profissao { get; set; }
         public required string Escolaridade { get; set; }

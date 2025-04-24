@@ -5,7 +5,7 @@ using TrampoFacil.Domain.Interfaces.Services;
 namespace TrampoFacil.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/usuario")]
     public class UsuarioController : ControllerBase
     {
          private readonly IUsuarioService _usuarioService;
@@ -15,15 +15,6 @@ namespace TrampoFacil.API.Controllers
             _usuarioService = usuarioService;
         }
         
-        // Cadastrar Usuário
-        //Login
-        //Atualizar dados do Perfil
-        //Recuperação de Conta ("esqueci a senha")
-        //Redefinir Senha
-        //Logout
-        //Buscar profissional por nome
-
-
         
         
 
