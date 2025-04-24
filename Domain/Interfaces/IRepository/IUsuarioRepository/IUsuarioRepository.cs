@@ -1,15 +1,13 @@
 using Domain.Models;
 
-namespace TrampoFacil.Domain.Interfaces.Repository{
+namespace TrampoFacil.Domain.Interfaces.IRepository{
 public interface IUsuarioRepository
     {
-        Task<Usuario> GetByIdAsync(Guid id);
-        
-        /*Task<IEnumerable<Usuario>> GetAllAsync();
-        Task AddAsync(Usuario usuario);
-        Task UpdateAsync(Usuario usuario);
-        Task DeleteAsync(Guid id);
-        Task<Usuario?> GetByEmailAsync(string Email);*/
+       Task<Usuario> CadastrarUsuarioAsync(Usuario usuario);
+       Task<Usuario> AtualizarPerfilAsync(Usuario usuario);
+       Task DeletarUsuarioAsync(Guid IdUsuario);
+       Task<IEnumerable<Usuario>> BuscarPorNomeAsync(string Nome);
+       Task<Usuario?> ObterPorIdAsync(Guid IdUsuario);
     }
 
 }
