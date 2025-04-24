@@ -1,7 +1,7 @@
 using TrampoFacil.Application.DTOs.Usuario;
 using Domain.Models;
 using TrampoFacil.Domain.Interfaces.IRepository;
-using TrampoFacil.Domain.Interfaces.Services;
+using TrampoFacil.Domain.Interfaces.IServices;
 using AutoMapper;
 using TrampoFacil.Exceptions.AutenticacaoExceptions;
 

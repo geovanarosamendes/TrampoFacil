@@ -1,6 +1,6 @@
 using TrampoFacil.Application.DTOs.Usuario;
 
-namespace TrampoFacil.Domain.Interfaces.Services{
+namespace TrampoFacil.Domain.Interfaces.IServices{
     public interface IUsuarioService
     {
         
@@ -8,7 +8,7 @@ namespace TrampoFacil.Domain.Interfaces.Services{
         Task<UsuarioReadDTO> AtualizarPerfilAsync(UsuarioUpdateDTO usuarioUpdateDto);
         Task DeletarUsuarioAsync(Guid IdUsuario);
         Task<UsuarioReadDTO> VisualizarPerfilAsync(Guid IdUsuario);
-        Task<IEnumerable<UsuarioReadDTO>> BuscarPorNomeAsync(string nome);
+        Task<IEnumerable<UsuarioReadDTO>> BuscarPorNomeAsync(string Nome);
          
     }
 }
