@@ -7,6 +7,8 @@ using DotNetEnv;
 using TrampoFacil.API.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
+using TrampoFacil.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ DotNetEnv.Env.Load();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.Configure<JwtSettings>(
 builder.Configuration.GetSection("Jwt"));
@@ -63,6 +67,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionMiddleware();
 
 app.UseAuthentication();
 app.UseAuthorization();
