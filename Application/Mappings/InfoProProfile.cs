@@ -1,8 +1,6 @@
 using AutoMapper;
 using Domain.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using TrampoFacil.Application.DTOs.InfoPro;
-using TrampoFacil.Domain.Models;
 
 namespace TrampoFacil.Application.Mappings
 {
@@ -13,9 +11,9 @@ namespace TrampoFacil.Application.Mappings
             
             CreateMap<InfoPro, InfoProReadDTO>();
 
-            CreateMap<InfoProCreateDTO, InfoPro>();
+            CreateMap<InfoProDTO, InfoPro>();
 
-            CreateMap<InfoProUpdateDTO, InfoPro>();
+            
 
         }
     }

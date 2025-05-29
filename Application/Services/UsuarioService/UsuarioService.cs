@@ -4,6 +4,7 @@ using TrampoFacil.Domain.Interfaces.IRepository;
 using TrampoFacil.Domain.Interfaces.IServices;
 using AutoMapper;
 using TrampoFacil.Exceptions.AutenticacaoExceptions;
+using TrampoFacil.Exceptions;
 
 namespace TrampoFacil.Application.Services{
 
@@ -19,11 +20,11 @@ namespace TrampoFacil.Application.Services{
 
         }
 
-        public async Task<UsuarioReadDTO>CadastrarUsuarioAsync(UsuarioCreateDTO usuarioCreateDto)
+        public async Task<UsuarioReadDTO>CadastrarUsuarioAsync(UsuarioDTO usuarioDto)
         {
            
-            var usuario = _mapper.Map<Usuario>(usuarioCreateDto);
-            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuarioCreateDto.Senha);
+            var usuario = _mapper.Map<Usuario>(usuarioDto);
+            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha);
 
 
            
@@ -33,19 +34,10 @@ namespace TrampoFacil.Application.Services{
             
         } 
         
-        public async Task<UsuarioReadDTO>AtualizarPerfilAsync(UsuarioUpdateDTO usuarioUpdateDto)
+        public async Task<UsuarioReadDTO>AtualizarPerfilAsync(UsuarioDTO usuarioDto)
         {
             
-            var usuario = await _usuarioRepository.ObterPorIdAsync(usuarioUpdateDto.IdUsuario);
-
-            if (usuario == null)
-            {
-                throw new UsuarioNaoEncontrado();
-            }
-            
-            _mapper.Map(usuarioUpdateDto, usuario);
-            
-
+            var usuario = _mapper.Map<Usuario>(usuarioDto);
             await _usuarioRepository.AtualizarPerfilAsync(usuario);
             
             return _mapper.Map<UsuarioReadDTO>(usuario);
@@ -54,16 +46,7 @@ namespace TrampoFacil.Application.Services{
         public async Task DeletarUsuarioAsync (Guid IdUsuario)
         {
            
-            var usuario = await _usuarioRepository.ObterPorIdAsync(IdUsuario);
-
-            if(usuario == null)
-            {
-                throw new UsuarioNaoEncontrado();
-            }
-
-            
             await _usuarioRepository.DeletarUsuarioAsync(IdUsuario);
-
         }
 
         public async Task<UsuarioReadDTO>VisualizarPerfilAsync(Guid IdUsuario)
@@ -83,6 +66,10 @@ namespace TrampoFacil.Application.Services{
         {
             
             var usuario = await _usuarioRepository.BuscarPorNomeAsync(Nome);
+            if (usuario == null)
+            {
+                throw new UsuarioNaoEncontrado();
+            }
            
             return _mapper.Map<IEnumerable<UsuarioReadDTO>>(usuario);
         }

@@ -6,7 +6,7 @@ namespace TrampoFacil.Exceptions.AutenticacaoExceptions
     public class TokenInvalido : AppExceptions
     {
         public TokenInvalido()
-            :base("Token Inválido", (int)HttpsStatusCode.Unauthorized)
+            :base("Token Inválido", (int)HttpStatusCode.Unauthorized)
         {
         }
     }

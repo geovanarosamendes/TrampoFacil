@@ -5,7 +5,7 @@ public interface IUsuarioRepository
     {
        Task<Usuario> CadastrarUsuarioAsync(Usuario usuario);
        Task<Usuario> AtualizarPerfilAsync(Usuario usuario);
-       Task DeletarUsuarioAsync(Guid IdUsuario);
+       Task DeletarUsuarioAsync(Guid IdUsuatio);
        Task<IEnumerable<Usuario>> BuscarPorNomeAsync(string Nome);
        Task<Usuario?> ObterPorIdAsync(Guid IdUsuario);
     }

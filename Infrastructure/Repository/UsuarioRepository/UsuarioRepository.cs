@@ -27,12 +27,10 @@ namespace TrampoFacil.Infrastructure.Repository{
        
         public async Task DeletarUsuarioAsync(Guid IdUsuario)
         {
-            var usuario = await _context.Usuario.FindAsync(IdUsuario);
-            if( usuario != null)
-            {
-                _context.Usuario.Remove(usuario);
-                await _context.SaveChangesAsync();
-            }
+             var usuario = await _context.Usuario.FindAsync(IdUsuario);
+            _context.Usuario.Remove(usuario);
+            _context.SaveChangesAsync();
+            
 
         }    
         public async Task<IEnumerable<Usuario>> BuscarPorNomeAsync(string Nome)

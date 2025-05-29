@@ -10,8 +10,10 @@ namespace TrampoFacil.Application.Mappings
         public UsuarioProfile()
         {
             CreateMap<Usuario, UsuarioReadDTO>();
-            CreateMap<UsuarioCreateDTO, Usuario>();
-            CreateMap<UsuarioUpdateDTO, Usuario>()
+
+            CreateMap<UsuarioDTO, Usuario>();
+            
+            CreateMap<UsuarioDTO, Usuario>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

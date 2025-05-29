@@ -6,7 +6,7 @@ namespace TrampoFacil.Exceptions.AutenticacaoExceptions
     public class TokenAusente : AppExceptions
     {
         public TokenAusente()
-            :base("Token de acesso não encontrado",(int)HttpsStatusCode.Unauthorized)
+            :base("Token de acesso não encontrado",(int)HttpStatusCode.Unauthorized)
         {
         }
     }

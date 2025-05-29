@@ -8,6 +8,7 @@ namespace Domain.Models{
         public string  Descricao { get; set; }
         public string  Telefone { get; set; }
         public string Cobranca { get; set; }
+        public string Valor { get; set; }
         public DateTime CriadoEm { get; set; }
 
         public Guid UsuarioId { get; set;}

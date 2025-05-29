@@ -11,7 +11,7 @@ namespace TrampoFacil.Infrastructure.Data {
     
 
         public DbSet<Usuario>Usuario {get; set;}
-        public DbSet<InfoPro>InfoProPro{get; set;}
+        public DbSet<InfoPro>InfoPro{get; set;}
         public DbSet<Anuncio>Anuncio {get; set;}
         public DbSet<Denuncia>Denuncia {get; set;}
     

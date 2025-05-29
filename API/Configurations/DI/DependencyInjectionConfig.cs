@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.DependencyInjection;
 using TrampoFacil.Domain.Interfaces.IRepository;
-using TrampoFacil.Domain.Interfaces.IServices;
 using TrampoFacil.Infrastructure.Repository;
 using TrampoFacil.Application.Services;
+using TrampoFacil.Domain.Interfaces.IServices;
+using TrampoFacil.Domain.Interfaces;
 
 
 public static class DependencyInjectionConfig
