@@ -14,8 +14,7 @@
 - [🏗️ Arquitetura e Organização](#️-arquitetura-e-organização)
 - [🔒 Autenticação JWT](#-autenticação-jwt)
 - [❗ Middleware Global de Erros](#-middleware-global-de-erros)
-- [🤝 Contribuição](#-contribuição)
-- [📝 Licença](#-licença)
+
 
 ---
 
@@ -115,3 +114,17 @@ A autenticação é feita por Token JWT, com segurança configurada via middlewa
 
 Authorization: Bearer {seu_token}
 Tokens possuem validade configurada e permanecem ativos até expiração ou logout.
+
+## ❗ Middleware Global de Erros
+
+Captura todas as exceções não tratadas.
+Retorna mensagens padronizadas e amigáveis.
+Usa ILogger para registrar os erros.
+Baseado em exceptions personalizadas da aplicação (AppException, TokenInvalidoException, etc).
+
+```bash
+app.UseMiddleware<ExceptionMiddleware>();
+```
+Adicione antes de app.MapControllers() no Program.cs.
+
+
