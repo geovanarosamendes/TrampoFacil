@@ -4,7 +4,7 @@ namespace TrampoFacil.Domain.Interfaces.IServices{
     public interface IUsuarioService
     {
         
-        Task<UsuarioReadDTO> CadastrarUsuarioAsync(UsuarioDTO usuarioDto);
+        Task<UsuarioCadastroResponseDTO> CadastrarUsuarioAsync(UsuarioDTO usuarioDto);
         Task<UsuarioReadDTO> AtualizarPerfilAsync(UsuarioDTO usuarioDto);
         Task DeletarUsuarioAsync(Guid IdUsuario);
         Task<UsuarioReadDTO> VisualizarPerfilAsync(Guid IdUsuario);
