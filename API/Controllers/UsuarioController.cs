@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrampoFacil.API.Helpers;
 using TrampoFacil.Application.DTOs.Usuario;
+using TrampoFacil.Application.Services;
 using TrampoFacil.Domain.Interfaces.IServices;
 
 namespace TrampoFacil.API.Controllers
@@ -11,18 +12,20 @@ namespace TrampoFacil.API.Controllers
     public class UsuarioController : ControllerBase
     {
          private readonly IUsuarioService _usuarioService;
+         private readonly TokenGeneratorService _tokenGeneraorService;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService, TokenGeneratorService tokenGeneraorService)
         {
             _usuarioService = usuarioService;
+            _tokenGeneraorService = tokenGeneraorService;
         }
         
-        [HttpPost]
-        public async Task<IActionResult>CadastrarUsuarioAsync([FromBody] UsuarioDTO usuarioDto)
+        [AllowAnonymous]
+        [HttpPost("cadastro")]
+        public async Task<ActionResult<UsuarioCadastroResponseDTO>> Cadastrar([FromBody] UsuarioDTO usuarioDto)
         {
-                var dadosDeCadastro = await _usuarioService.CadastrarUsuarioAsync(usuarioDto);
-
-                return Created("", dadosDeCadastro);
+            var resultado = await _usuarioService.CadastrarUsuarioAsync(usuarioDto);
+            return Ok(resultado);
 
         }
 

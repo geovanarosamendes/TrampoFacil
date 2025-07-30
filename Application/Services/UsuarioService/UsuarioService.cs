@@ -12,26 +12,31 @@ namespace TrampoFacil.Application.Services{
     {
         private readonly IMapper _mapper;
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly TokenGeneratorService _tokenGeneraorService;
 
-        public UsuarioService(IMapper mapper, IUsuarioRepository usuarioRepository)
+        public UsuarioService(IMapper mapper, IUsuarioRepository usuarioRepository, TokenGeneratorService tokenGeneraorService)
         {
             _mapper = mapper;
             _usuarioRepository = usuarioRepository;
-
+            _tokenGeneraorService = tokenGeneraorService;
         }
 
-        public async Task<UsuarioReadDTO>CadastrarUsuarioAsync(UsuarioDTO usuarioDto)
+        public async Task<UsuarioCadastroResponseDTO>CadastrarUsuarioAsync(UsuarioDTO usuarioDto)
         {
            
             var usuario = _mapper.Map<Usuario>(usuarioDto);
             usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha);
-
-
-           
-            await _usuarioRepository.CadastrarUsuarioAsync(usuario);
-
-            return _mapper.Map<UsuarioReadDTO>(usuario);
             
+            await _usuarioRepository.CadastrarUsuarioAsync(usuario);
+            var token = _tokenGeneraorService.GerarToken(usuario);
+
+            return new UsuarioCadastroResponseDTO()
+            {
+                Nome = usuario.Nome,
+                Email = usuario.Email,
+                Token = token
+            };
+
         } 
         
         public async Task<UsuarioReadDTO>AtualizarPerfilAsync(UsuarioDTO usuarioDto)

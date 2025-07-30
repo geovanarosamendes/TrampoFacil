@@ -49,10 +49,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
     // exceptions personalizadas
        options.Events = new JwtBearerEvents
-    {
+       {
         OnMessageReceived = context =>
         {
+            var endpoint = context.HttpContext.GetEndpoint();
+            
+            var allowAnonymous = endpoint?.Metadata?.GetMetadata<Microsoft.AspNetCore.Authorization.IAllowAnonymous>() != null;
+            if (allowAnonymous)
+            {
+                return Task.CompletedTask;
+            }
+
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+
             if (string.IsNullOrEmpty(token))
             {
                 throw new TokenAusente();
@@ -61,11 +70,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             context.Token = token;
             return Task.CompletedTask;
         },
+
         OnAuthenticationFailed = context =>
         {
             throw new TokenInvalido();
         }
-    };
+        
+       };
     });
 
 
